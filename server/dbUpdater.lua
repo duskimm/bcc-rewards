@@ -8,21 +8,21 @@ CreateThread(function()
             `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
             `expires_at` DATETIME DEFAULT NULL,
             PRIMARY KEY (`code`)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ]])
 
     MySQL.query.await([[
         CREATE TABLE IF NOT EXISTS `bcc_rewardcodes_items` (
             `id` INT(11) NOT NULL AUTO_INCREMENT,
-            `code` VARCHAR(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-            `item` VARCHAR(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+            `code` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+            `item` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
             `quantity` INT(11) NOT NULL DEFAULT 1,
             PRIMARY KEY (`id`),
             KEY `bcc_rc_items_code_fk` (`code`),
             KEY `bcc_rc_items_item_fk` (`item`),
             CONSTRAINT `bcc_rc_items_code_fk` FOREIGN KEY (`code`) REFERENCES `bcc_rewardcodes` (`code`) ON DELETE CASCADE ON UPDATE CASCADE,
             CONSTRAINT `bcc_rc_items_item_fk` FOREIGN KEY (`item`) REFERENCES `items` (`item`) ON DELETE CASCADE ON UPDATE CASCADE
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ]])
 
     MySQL.query.await([[
@@ -32,7 +32,7 @@ CreateThread(function()
             `gold` INT(11) NOT NULL DEFAULT 0,
             PRIMARY KEY (`code`),
             CONSTRAINT `bcc_rc_money_code_fk` FOREIGN KEY (`code`) REFERENCES `bcc_rewardcodes` (`code`) ON DELETE CASCADE ON UPDATE CASCADE
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ]])
 
     MySQL.query.await([[
@@ -43,7 +43,7 @@ CreateThread(function()
             PRIMARY KEY (`identifier`, `code`),
             KEY `bcc_rc_users_code_fk` (`code`),
             CONSTRAINT `bcc_rc_users_code_fk` FOREIGN KEY (`code`) REFERENCES `bcc_rewardcodes` (`code`) ON DELETE CASCADE ON UPDATE CASCADE
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ]])
 
     MySQL.query.await([[
@@ -55,7 +55,7 @@ CreateThread(function()
             PRIMARY KEY (`id`),
             KEY `bcc_rc_weapons_code_fk` (`code`),
             CONSTRAINT `bcc_rc_weapons_code_fk` FOREIGN KEY (`code`) REFERENCES `bcc_rewardcodes` (`code`) ON DELETE CASCADE ON UPDATE CASCADE
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ]])
 
     MySQL.query.await([[
